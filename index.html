@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Old Photo Restorer - brighten and clean up faded or dark family photos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=13">
+</head>
+<body>
+<header class="top">
+  <div class="browser-chrome"><span class="traffic red"></span><span class="traffic yellow"></span><span class="traffic green"></span><span class="chrome-divider"></span><span class="chrome-icon">&#9664;</span><span class="chrome-icon muted">&#9654;</span><div class="address">old-photo-restorer.local</div><span class="chrome-icon">&#8635;</span></div>
+  <div class="appbar">
+    <div class="brand"><span class="brand-mark">▣</span><b>OLD PHOTO RESTORER SYSTEM</b></div>
+    <div class="project-title">DASHBOARD - PROJECT: <strong>[FAMILY MEMORIES]</strong></div>
+  </div>
+</header>
+
+<main class="layout">
+  <section class="table" aria-label="Photo preview">
+    <div class="preview-head"><span>▣ &nbsp; ORIGINAL PHOTO</span><span>RESTORED PHOTO <b>✦</b></span></div>
+
+    <label class="drop" id="drop">
+      <span class="upload-icon">^</span>
+      <input type="file" id="file" accept="image/*" hidden>
+      <strong>Drop a treasured photo here</strong>
+      <span>or click to choose a file (JPG, PNG, WebP)</span>
+      <button type="button" class="primary upload-big" id="uploadMain">+ Upload photo</button>
+      <button type="button" class="link" id="sample">No photo handy? Try a sample</button>
+    </label>
+
+    <div class="frame" id="frame" hidden>
+      <canvas id="after"></canvas>
+      <canvas id="before"></canvas>
+      <span class="tag tag-l">Original</span>
+      <span class="tag tag-r">Restored</span>
+      <div class="handle" id="handle" role="slider" tabindex="0" aria-label="Compare original and restored" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><i></i></div>
+    </div>
+    <p class="hint" id="hint" hidden><span>&lt;-&gt;</span> Drag the divider to compare <i>/</i> Use arrow keys when focused</p>
+    <div class="session-head"><span>CURRENT SESSION</span><span>‹ &nbsp;›</span></div>
+    <div class="session-strip" aria-label="Restoration filter presets">
+      <button class="thumb original selected" data-filter="original" type="button"><span></span><small>ORIGINAL</small></button>
+      <button class="thumb restored" data-filter="restored" type="button"><span></span><small>AUTO RESTORED</small></button>
+      <button class="thumb colorized" data-filter="colorize" type="button"><span></span><small>COLOURISED</small></button>
+      <button class="thumb clean" data-filter="clean" type="button"><span></span><small>CLEANED</small></button>
+    </div>
+  </section>
+
+  <aside class="panel" id="panel" aria-label="Restoration controls">
+    <div class="panel-heading"><h2>ADJUSTMENT CONTROLS</h2></div>
+    <label class="fix-faded" for="fixFaded">
+      <span class="ff-text"><b>FIX FADED PHOTO</b><small>Stretch washed-out tones and remove colour cast</small></span>
+      <input type="checkbox" id="fixFaded" checked>
+      <span class="switch" aria-hidden="true"></span>
+    </label>
+    <div class="group">
+        <h2>QUICK PRESETS</h2>
+      <div class="chips" id="chips"></div>
+    </div>
+    <section class="settings" id="settings">
+      <button class="acc-head" id="settingsToggle" type="button" aria-expanded="true"><span>SETTINGS</span><span class="chev" aria-hidden="true">⌃</span></button>
+      <div class="acc-body" id="sliders"></div>
+    </section>
+    <div class="group">
+        <h2>COLOUR MODE</h2>
+      <div class="seg" id="tone" role="group" aria-label="Colour mode">
+        <button data-t="color" aria-pressed="true">Colour</button>
+        <button data-t="sepia" aria-pressed="false">Sepia</button>
+        <button data-t="colorize" aria-pressed="false">Restore colour</button>
+      </div>
+      <p class="tone-note" id="toneNote">Old black &amp; white or sepia photos are colourised automatically.</p>
+    </div>
+    <div class="actions">
+      <button class="primary export" id="save" disabled>EXPORT</button>
+      <div class="row2">
+        <button id="reset" disabled>Reset</button>
+        <button id="again" type="button">Upload another</button>
+      </div>
+    </div>
+  </aside>
+</main>
+<div class="toast" id="toast" role="status"></div>
+<script src="app.js?v=12"></script>
+</body>
+</html>
